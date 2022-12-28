@@ -15,6 +15,7 @@ namespace EmployeeWageProblem
 
 
             int EMP_RATE_PER_HOUR = 20;
+            int DAY_PER_MONTH = 20;    
 
             int empHrs = 0;
             int empWage = 0;
@@ -40,8 +41,8 @@ namespace EmployeeWageProblem
                     Console.WriteLine("Employee is Absent");
             }
 
-           
-            empWage = empHrs * EMP_RATE_PER_HOUR;
+
+            empWage = empHrs * EMP_RATE_PER_HOUR * DAY_PER_MONTH;
             Console.WriteLine("Emp Wage: " + empWage);
         }
     }
