@@ -15,35 +15,47 @@ namespace EmployeeWageProblem
 
 
             int EMP_RATE_PER_HOUR = 20;
-            int DAY_PER_MONTH = 20;    
+            const int NUM_OF_WORKING_DAYS = 20;
+            const int MAX_HRS_IN_MONTH = 100;
+              
 
             int empHrs = 0;
             int empWage = 0;
-            
+            int totalEmpHrs = 0;
+            int totalEmpWage = 0;
+            int totalWorkingDays = 0;
 
-            Random random = new Random();
-            int empCheck = random.Next(3);
-            
-            switch (empCheck)
+            while (totalEmpHrs<=MAX_HRS_IN_MONTH && totalWorkingDays< NUM_OF_WORKING_DAYS)
             {
-                case IS_FULL_TIME:
-                    Console.WriteLine("Employee is present Full Time");
-                    empHrs = 8;
-                    break;
+                totalWorkingDays++;
 
-                case IS_PART_TIME:
-                    Console.WriteLine("Employee is present Part Time");
-                    empHrs = 4;
-                    break;
 
-                
-                    empHrs = 0;
-                    Console.WriteLine("Employee is Absent");
+                Random random = new Random();
+                int empCheck = random.Next(3);
+                switch (empCheck) 
+                {
+                    case IS_FULL_TIME:
+                        empHrs = 8;
+                        break;
+
+                        case IS_PART_TIME:
+                        empHrs = 4;
+                        break;
+
+                    case 0:
+                        empHrs = 0;
+                        break;
+                }
+                totalEmpHrs += empHrs;
+                Console.WriteLine("Day#: " + totalWorkingDays + "Emp Hrs : " + empHrs);
             }
 
+            totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
+            Console.WriteLine("Total Employee Wage " + totalEmpWage);
+            
+           
 
-            empWage = empHrs * EMP_RATE_PER_HOUR * DAY_PER_MONTH;
-            Console.WriteLine("Emp Wage: " + empWage);
+
         }
     }
 }
