@@ -10,38 +10,37 @@ namespace EmployeeWageProblem
     {
         public static void CheckAttendance()
         {
-            int IS_FULL_TIME = 1;
-            int IS_PART_TIME = 2;
+           const int IS_FULL_TIME = 1;
+            const int IS_PART_TIME = 2;
 
 
             int EMP_RATE_PER_HOUR = 20;
 
             int empHrs = 0;
             int empWage = 0;
+            
 
             Random random = new Random();
             int empCheck = random.Next(3);
             
-
-            if (empCheck == IS_FULL_TIME)
+            switch (empCheck)
             {
+                case IS_FULL_TIME:
+                    Console.WriteLine("Employee is present Full Time");
+                    empHrs = 8;
+                    break;
+
+                case IS_PART_TIME:
+                    Console.WriteLine("Employee is present Part Time");
+                    empHrs = 4;
+                    break;
+
                 
-                Console.WriteLine("Employee is Present Full TIme ");
-                empHrs = 8;
+                    empHrs = 0;
+                    Console.WriteLine("Employee is Absent");
             }
-            else if (empCheck == IS_PART_TIME)
-            {
-                Console.WriteLine("Employee is Present Part Time");
-                empHrs = 4;
-            }
-             else
-            {
-                Console.WriteLine("Employee is Absent");
-                empHrs = 0;
 
-
-               
-            }
+           
             empWage = empHrs * EMP_RATE_PER_HOUR;
             Console.WriteLine("Emp Wage: " + empWage);
         }
